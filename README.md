@@ -1,2 +1,3 @@
-# blogs_swift
-ブログ用のswiftサンプルコードリポジトリ
+# Swiftサンプルコード
+個人で運用しているブログのSwiftサンプルコード
+[ぬるぽ]https://www.nullnullpon.com/
