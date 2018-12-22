@@ -27,6 +27,8 @@ class ViewController: UIViewController {
         let configuration = ARWorldTrackingConfiguration()
         configuration.planeDetection = .horizontal
         sceneView.session.run(configuration)
+        // シーン全体のぎ重力をｄ変更
+        sceneView.scene.physicsWorld.gravity = SCNVector3(0, -0.1, 0)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -48,9 +50,11 @@ class ViewController: UIViewController {
             
             let node = SCNNode()
             // Boxオブジェクトを作成
-            node.geometry = SCNBox(width: 0.2, height: 0.2, length: 0.2, chamferRadius: 0)
+            node.geometry = SCNBox(width: 0.05, height: 0.05, length: 0.05, chamferRadius: 0)
             // SCNNodeのphysicsBodyに重力を設定
             node.physicsBody = SCNPhysicsBody(type: .dynamic, shape: SCNPhysicsShape(geometry: node.geometry!, options: nil))
+            // 空気抵抗を上げて落下スピードを遅くする
+//            node.physicsBody?.damping = 1
             // Boxの色を青色に設定
             let material = SCNMaterial()
             material.diffuse.contents = UIColor.blue
